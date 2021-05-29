@@ -7,26 +7,35 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.udacity.notepad.R
-import com.udacity.notepad.data.DataStore.execute
-import com.udacity.notepad.data.DataStore.notes
 import com.udacity.notepad.data.Note
+import com.udacity.notepad.util.InjectorUtils
+import com.udacity.notepad.viewmodel.NoteViewModel
 import java.util.*
 
-class CreateActivity : AppCompatActivity() {
+class CreateActivity: AppCompatActivity() {
 
     private lateinit var editText: TextView
 
     companion object {
-        operator fun get(context: Context?): Intent {
+        operator fun get(context: Context): Intent {
             return Intent(context, CreateActivity::class.java)
         }
     }
+
+    //ViewModel
+    private var viewModel: NoteViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
         editText = findViewById(R.id.edit_text)
+
+        viewModel = ViewModelProvider(
+            this,
+            InjectorUtils.provideNoteViewModelFactory(this@CreateActivity)
+        ).get(NoteViewModel::class.java).also { this.viewModel = it }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -46,10 +55,9 @@ class CreateActivity : AppCompatActivity() {
     }
 
     private fun save() {
-        execute {
-            val note = updateNote()
-            notes.insert(note)
-        }
+
+        val note = updateNote()
+        viewModel!!.insertNote(note)
     }
 
     private fun updateNote(): Note {
