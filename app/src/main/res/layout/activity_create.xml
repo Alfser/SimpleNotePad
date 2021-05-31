@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundLayout"
     tools:context="com.udacity.notepad.crud.CreateActivity"
     android:padding="@dimen/margin_normal">
 
@@ -13,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/card_min_height"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        android:backgroundTint="@color/backgroundItemTint">
 
         <LinearLayout
             android:layout_width="match_parent"
