@@ -1,14 +1,14 @@
 # SimpleNotePad
 The app goals is working as a simple notepad use to make all notes you need to do.
-## App Screenshots
-![noteList](./screenshots/notelist.JPG)
-![noteList](./screenshots/typeview.JPG)
-![noteList](./screenshots/roundicon.JPG)
+### App Screenshots
+![noteList](./screenshots/notelist.jpeg)
+![noteList](./screenshots/typeview.jpeg)
+![noteList](./screenshots/roundicon.jpeg)
 ---
-## App APK to download
+### App APK to download
 You can download app [here](./exemple/app-debug.apk)
 ---
-## License
+### License
 
 Copyright 2019-2021 Janilson Serra.
 
@@ -28,7 +28,7 @@ License for the specific language governing permissions and limitations under
 the License.
 
 ---
-# Found me
+### Found me
 
 - Email: j.janilson12@gmail.com
 - Linkedin : https://www.linkedin.com/in/janilsonalfser
