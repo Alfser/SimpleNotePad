@@ -9,7 +9,7 @@ import java.util.*
 data class Note(
 
     @PrimaryKey(autoGenerate = true)
-    var id:Int = -1,
+    var id:Int=0,
 
     var text: String? = null,
 

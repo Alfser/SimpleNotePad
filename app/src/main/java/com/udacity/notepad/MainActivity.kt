@@ -1,6 +1,7 @@
 package com.udacity.notepad
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -35,17 +36,14 @@ class MainActivity : AppCompatActivity() {
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener { startActivity(CreateActivity.get(this@MainActivity)) }
 
-        viewModel.getNotes().observe(this){
-            value -> value?.let {
-                notes = it
-            }
-        }
-
         recycler = findViewById(R.id.recycler)
         recycler!!.setLayoutManager(LinearLayoutManager(this))
         recycler!!.addItemDecoration(SpaceItemDecoration(this, R.dimen.margin_small))
-        recycler!!.setAdapter(NotesAdapter(this, notes))
 
+
+        viewModel.getNotes().observe(this){
+                notes -> recycler!!.setAdapter(NotesAdapter(this, notes))
+        }
     }
 
 
